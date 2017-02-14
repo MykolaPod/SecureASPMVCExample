@@ -26,6 +26,10 @@ namespace AutoLogOutSample
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/common").Include(
+                "~/Scripts/common.js",
+                "~/Scripts/session-timer.js"));
         }
     }
 }
