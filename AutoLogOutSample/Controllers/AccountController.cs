@@ -9,11 +9,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AutoLogOutSample.Models;
+using AutoLogOutSample.ViewModels;
 
 namespace AutoLogOutSample.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -391,6 +392,8 @@ namespace AutoLogOutSample.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            PingObject value;
+            UsersPingResult.TryRemove(Session.SessionID, out value);
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
