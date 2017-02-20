@@ -42,7 +42,9 @@
     @Scripts.Render("~/bundles/common")
     @Helpers.PassResourcesToScript(new Dictionary<string, string>
         {
-            {"SessionTimeout", Session.Timeout.ToString() }
+            {"SessionTimeout", Session.Timeout.ToString() },
+            {"PingActionUrl", Url.Action("PingPage") },
+            {"PingActionInterval","4000" }
         })
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/bundles/session-handling")

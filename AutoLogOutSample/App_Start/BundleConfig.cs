@@ -32,7 +32,8 @@ namespace AutoLogOutSample
                ));
 
             bundles.Add(new ScriptBundle("~/bundles/session-handling").Include(
-                "~/Scripts/session-timer.js"
+                "~/Scripts/session-timer.js",
+                "~/Scripts/session-ping.js"
                ));
         }
     }
