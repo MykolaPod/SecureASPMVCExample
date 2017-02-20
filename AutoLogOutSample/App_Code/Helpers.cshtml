@@ -1,0 +1,11 @@
+﻿@helper PassResourcesToScript(Dictionary<string, string> resourcesDictionary)
+{
+    @:<script>
+    @:var Resources = {};
+    foreach (var res in resourcesDictionary)
+    {
+        // Create a property on the javascript object for each text resource
+        @:AutoLogOutApp.Resources.@res.Key = "@HttpUtility.JavaScriptStringEncode(res.Value)";
+    }
+    @:</script>
+}

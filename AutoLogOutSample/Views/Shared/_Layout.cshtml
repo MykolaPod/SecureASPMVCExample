@@ -39,6 +39,12 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/common")
+    @Helpers.PassResourcesToScript(new Dictionary<string, string>
+        {
+            {"SessionTimeout", Session.Timeout.ToString() }
+        })
     @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/session-handling")
 </body>
 </html>

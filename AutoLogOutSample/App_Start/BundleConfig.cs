@@ -27,9 +27,13 @@ namespace AutoLogOutSample
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new ScriptBundle("~/Scripts/common").Include(
-                "~/Scripts/common.js",
-                "~/Scripts/session-timer.js"));
+            bundles.Add(new ScriptBundle("~/bundles/common").Include(
+                "~/Scripts/common.js"
+               ));
+
+            bundles.Add(new ScriptBundle("~/bundles/session-handling").Include(
+                "~/Scripts/session-timer.js"
+               ));
         }
     }
 }
