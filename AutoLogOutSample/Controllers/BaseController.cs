@@ -1,5 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using AutoLogOutSample.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -11,7 +12,7 @@ namespace AutoLogOutSample.Controllers
     {
         public static ConcurrentDictionary<string, PingObject> UsersPingResult = new ConcurrentDictionary<string, PingObject>();
         
-        protected IAuthenticationManager AuthenticationManager { get; }
+        protected IAuthenticationManager AuthenticationManager { get{ return System.Web.HttpContext.Current.GetOwinContext().Authentication;} }
 
         protected override void OnAuthorization(AuthorizationContext filterContext)
         {

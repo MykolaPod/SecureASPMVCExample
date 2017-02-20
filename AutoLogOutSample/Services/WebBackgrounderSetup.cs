@@ -22,7 +22,7 @@ namespace AutoLogOutSample.Services
         {
             var jobs = new IJob[]
             {
-                new ResetPingStatusJob(TimeSpan.FromSeconds(20), TimeSpan.FromSeconds(30)),
+                new ResetPingStatusJob(interval:TimeSpan.FromSeconds(20),timeout: TimeSpan.FromSeconds(30)),
             };
 
             var coordinator = new SingleServerJobCoordinator();

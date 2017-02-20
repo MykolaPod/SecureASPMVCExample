@@ -59,6 +59,13 @@ namespace AutoLogOutSample.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                ViewBag.IsBackToLogin = true;
+            }
+
             return View();
         }
 
@@ -73,6 +80,8 @@ namespace AutoLogOutSample.Controllers
             {
                 return View(model);
             }
+
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -395,7 +404,7 @@ namespace AutoLogOutSample.Controllers
             PingObject value;
             UsersPingResult.TryRemove(Session.SessionID, out value);
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //
