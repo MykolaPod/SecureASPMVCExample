@@ -6,7 +6,7 @@ namespace AutoLogOutSample.Services
 {
     public static class WebBackgrounderSetup
     {
-        static readonly JobManager JobManager = CreateJobWorkersManager();
+        private static readonly JobManager JobManager = CreateJobWorkersManager();
 
         public static void Start()
         {
