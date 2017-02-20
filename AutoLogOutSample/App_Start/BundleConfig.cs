@@ -33,8 +33,10 @@ namespace AutoLogOutSample
 
             bundles.Add(new ScriptBundle("~/bundles/session-handling").Include(
                 "~/Scripts/session-timer.js",
-                "~/Scripts/session-ping.js"
-               ));
+                "~/Scripts/session-ping.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/login-lock").Include(
+                 "~/Scripts/session-login-lock.js"));
         }
     }
 }
